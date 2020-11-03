@@ -1,0 +1,54 @@
+#main.js
+----------------------------------------------------------------
+# 메인 페이지 폼보기 요청
+요청 내용	: /cls/main.cls
+파라미터	: 무
+컨트롤러	: com.increpas.cls.controller.MainController
+뷰			: /WEB-INF/views/com/increpas/cls/main.jsp;
+----------------------------------------------------------------
+----------------------------------------------------------------
+# 로그인 페이지 폼보기 요청
+요청 내용	: /cls/member/login.cls
+파라미터	: 무
+컨트롤러	: com.increpas.cls.controller.member.Login
+뷰			: /WEB-INF/views/com/increpas/cls/member/Login.jsp;
+----------------------------------------------------------------
+----------------------------------------------------------------
+# 로그인 처리 요청
+요청 내용	: /cls/member/loginProc.cls
+파라미터	: id, pw
+컨트롤러	: com.increpas.cls.controller.member.LoginProc
+뷰			: (redirect) - 성공 : /cls/main.cls;
+						   실패 : /cls/member/login.cls;
+----------------------------------------------------------------
+----------------------------------------------------------------
+# 로그아웃 처리 요청
+요청 내용	: /cls/member/logout.cls
+파라미터	: 무
+컨트롤러	: com.increpas.cls.controller.member.Logout
+뷰			: (redirect) - /cls/member/login.cls;
+----------------------------------------------------------------
+----------------------------------------------------------------
+# 회원가입 폼 보기 요청
+요청 내용	: /cls/member/join.cls
+파라미터	: 무
+컨트롤러	: com.increpas.cls.controller.member.Join
+뷰			: /WEB-INF/views/com/increpas/cls/member/Join.jsp;
+----------------------------------------------------------------
+----------------------------------------------------------------
+# 회원아이디 체크처리 요청
+요청 내용	: /cls/member/idCheck.cls
+파라미터	: id
+컨트롤러	: com.increpas.cls.controller.member.IdCheck
+뷰			: ajax ] JSON
+----------------------------------------------------------------
+----------------------------------------------------------------
+# 회원가입 처리 요청
+요청 내용	: /cls/member/joinProc.cls
+파라미터	: name, id, pw, mail, tel, gen, avt
+컨트롤러	: com.increpas.cls.controller.member.JoinProc
+뷰			: (redirect) - 성공 : /cls/main.cls
+						 - 실패 : /cls/member/join.cls
+----------------------------------------------------------------
+
+			  
