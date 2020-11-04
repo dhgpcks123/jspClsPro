@@ -12,7 +12,7 @@ public class IdCheck implements ClsMain {
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
 		// ajax 처리 속성
 		//안해줘도 된다
-		//req.setAttribute("isRedirect", null);	null이니까-!
+		req.setAttribute("isRedirect", null);
 		
 		StringBuffer buff = new StringBuffer();
 		
@@ -33,7 +33,7 @@ public class IdCheck implements ClsMain {
 		System.out.println("#### cont result : " + result);
 		
 		buff.append("{");
-		buff.append("	\"result\": \"" +result + "\"");
+		buff.append("	\"result\":\"" +result + "\"");
 		buff.append("}");
 		System.out.println(buff.toString());
 		return buff.toString();

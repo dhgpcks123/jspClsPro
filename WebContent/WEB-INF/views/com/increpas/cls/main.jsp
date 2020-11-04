@@ -21,20 +21,44 @@
 			}
 		});
 	</script>
+	<style>
+		h5 {
+			height: 40px;
+		}
+	</style>
 
 </head>
 <body>
+	<form method="POST" action="/cls/member/memberInfo.cls" id="frm" name="frm">
+		<input type="hidden" id="id" name="id" value="${SID}">	
+	</form>
 	<div class="w3-content w3-center mw700">
-		<h1 class="w3-teal w3-padding">CLS Project</h1>
+		<h1 class="w3-teal w3-padding w3-border-bottom">CLS Project</h1>
 		<div class="w3-col w3-padding w3-margin-top">
+			
 			<c:if test="${empty SID}">
-			<h5 class="w3-col w3-button w3-Light-blue w3-hover-cyan" id="lbtn">Login</h5>
+				<h5 class="w3-col m5 w3-button w3-light-blue w3-hover-cyan w3-left" id="jbtn">Join</h5>
+				<div class="w3-col m2"></div>
+				<h5 class="w3-col m5 w3-button w3-light-blue w3-hover-cyan w3-right" id="lbtn">Login</h5>
 			</c:if>
+			
 			<c:if test="${not empty sessionScope.SID}">
-			<div class="w3-col" id="btnfr">
-				<h5 class="w3-cell m2 w3-button w3-red w3-hover-pink" id="obtn">LogOut</h5>
-			</div>
+				<div class="w3-left w3-padding" style="color: gray;">[ ${SID} ] 회원님이 로그인 되어 있습니다</div>
+				<div class="w3-col" id="btnfr">
+					<div class="w3-col w3-margin-bottom w3-border-bottom">
+						<h5 class="w3-col m5 w3-button w3-red w3-hover-pink w3-right" id="obtn">LogOut</h5>
+						<div class="w3-col m2"></div>
+						<h5 class="w3-col m5 w3-button w3-red w3-hover-pink w3-left" id="ibtn">회원정보</h5>
+					</div>
+					<div class="w3-col w3-margin-top mt10" style="display:flex; justify-content: space-between;">
+						<h5 class="w3-button w3-lime w3-hover-green mw150" id="gbtn">방명록</h5>
+						<h5 class="w3-button w3-lime w3-hover-green mw150" id="sbtn">설문조사</h5>
+						<h5 class="w3-button w3-lime w3-hover-green mw150" id="bbtn">게시판</h5>
+						<h5 class="w3-button w3-lime w3-hover-green mw150" id="fbtn">파일게시판</h5>
+					</div>
+				</div>
 			</c:if>
+			
 		</div>
 	</div>
 </body>

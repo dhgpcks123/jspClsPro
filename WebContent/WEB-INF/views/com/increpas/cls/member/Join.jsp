@@ -10,6 +10,12 @@
 	<script type="text/javascript" src="/cls/js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="/cls/js/member/join.js"></script>
 	<style type="text/css">
+		input[type=text], input[type=password]{
+			border: 3px white solid;
+			border-bottom: 1px gray solid;
+			border-radius: 5px;
+			padding-bottom: 2px;
+		}
 		
 	</style>
 	</head>
@@ -17,8 +23,7 @@
 	<body>
 		<div class="w3-content w3-center mw650">
 			<h1 class="w3-amber w3-padding w3-card-4 w3-margin-top">Cls Join</h1>
-			<form method="POST" action="/cls/member/joinProc.cls"
-			 class="w3-col w3-padding w3-card-4 w3-margin-top" id="frm" name="frm">
+			<form class="w3-col w3-padding w3-card-4 w3-margin-top" id="frm" name="frm">
 
 				<div class="w3-col">
 					<label for="name" class="w3-col l3 m3 w3-right-align w3-padding clslbl">회 원 이 름 :</label>
@@ -46,6 +51,7 @@
 					<label for="repw" class="w3-col l3 m3 w3-right-align w3-padding clslbl">비밀번호 확인 :</label>
 					<div class="w3-col l8 m8 w3-padding">
 						<input type="password" id="repw" name="repw" placeholder="비밀번호를 재입력하세요!" style="width:400px;">
+						<span class="w3-col" id="pwmsg" style="display: none;"></span>
 					</div>
 				</div>
 				<div class="w3-col">
@@ -67,7 +73,7 @@
 							<input type="radio" class="gen" id="genM" name="gen" value="M"><span> 남자</span>
 						</div>
 						<div class="w3-half">
-							<input type="radio" class="gen" id="genW" name="gen" value="W"><span> 여자</span>
+							<input type="radio" class="gen" id="genW" name="gen" value="F"><span> 여자</span>
 						</div>
 					</div>
 				</div>
@@ -76,8 +82,8 @@
 					<div class="w3-col l8 m8 w3-padding">
 						<div class="w3-col avtfr">
 							<c:forEach var="data" items="${LIST}">
-								<div class="w3-third w3-padding w3-hide avt${data.gen}fr">
-									<input type="radio" class="gen" name="avt" value="${data.ano}">
+								<div class="w3-third w3-padding avt${data.gen}fr" style="display:none;">
+									<input type="radio" class="avt" name="avt" value="${data.ano}">
 									<div class="w3-col imgbox">
 										<img src="/cls/img/avatar/${data.savename}" class="imgsrc">
 									</div>

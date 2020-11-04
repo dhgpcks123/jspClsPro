@@ -1,3 +1,6 @@
+.mw150 {
+	width: 150px;
+}
 .mw500 {
 	max-width: 500px;
 }
@@ -18,6 +21,9 @@
 }
 .mw800 {
 	max-width: 800px;
+}
+.mw1500 {
+	max-width: 1500px;
 }
 
 .txt14 {
@@ -70,4 +76,8 @@
 .imgsrc{
 	width: 95px;
 	height: 95px;	
+}
+
+.mt10 {
+	margin-top: 10px;
 }
