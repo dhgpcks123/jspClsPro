@@ -46,7 +46,7 @@
 				
 				<div class="w3-col m5">
 					<div style="max-width: 250px; max-height:250px; margin-left: 50px;" class="infoAvtBox">
-						<img src="/cls/img/avatar/${DATA.avatar}" style="border: 1px solid black; width: 247px; height: 247px;" id="${DATA.avt}"><span class="w3-right">아바타 번호 : ${DATA.avt}</span>
+						<img src="/cls/img/avatar/${DATA.avatar}" style="border: 1px solid black; width: 247px; height: 247px;" id="${DATA.avt}"><span class="w3-right" id="avatarNoText">아바타 번호 : ${DATA.avt}</span>
 					</div>
 				</div>
 				<span class="w3-col m1">
@@ -103,7 +103,7 @@
 							<c:forEach var="data" items="${LIST}">
 								<c:if test="${data.gen == DATA.gen }">
 									<div class="w3-third w3-padding avt${data.gen}fr">
-										<input class="w3-col w3-padding" type="radio" class="avt" name="avt" value="${data.ano}">
+										<input class="w3-col w3-padding avt" type="radio" name="avt" value="${data.ano}">
 										<div class="w3-col w3-padding">
 											<img src="/cls/img/avatar/${data.savename}" class="imgsrc">
 										</div>

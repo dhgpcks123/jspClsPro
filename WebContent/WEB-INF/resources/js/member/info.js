@@ -25,14 +25,11 @@ $(document).ready(function(){
 		// 수정데이터
 		var tmail = $('#mail').val();
 		var tavt = $('.avt:checked').val();
-		alert('tavt : ' + tavt);
 		
 		if(!tavt){
 			tavt = oavt;
-		alert('if : tavt' + tavt);
 		} else {
 			var tmp = $('.avt:checked').next().children().eq(0).attr('src');
-		alert('tmp : ' + tmp);
 			imgsrc = tmp.substring(tmp.lastIndexOf('/'));
 			reid = $('.avt:checked').next().children().eq(0).attr('id');
 		}
@@ -54,6 +51,8 @@ $(document).ready(function(){
 					$('#cMail').text(tmail);
 					$('.infoAvtBox > img').eq(0).attr('src', '/cls/img/avatar' + imgsrc);
 					$('.infoAvtBox > img').eq(0).attr('id', reid);
+					$('.infoAvtBox > img').eq(0).attr('id', reid);
+					$('#avatarNoText').text('아바타 번호 : '+tavt)
 					
 					// 수정창 안보이게 처리하고
 					$('#frm').stop().slideUp(500);
@@ -102,7 +101,7 @@ $(document).ready(function(){
 				},
 				success: function(obj){
 					//obj = { 'result':'OK'};
-					if(obj.result == OK){
+					if(obj.result == 'OK'){
 						// 탈퇴처리 완료된 경우
 						$(location).attr('href', '/cls/main.cls');
 					} else {

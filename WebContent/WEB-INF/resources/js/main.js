@@ -7,7 +7,6 @@ $(document).ready(function(){
 	});
 	$('#ibtn').click(function(){
 		$('#frm').submit();
-		$(location).attr('href', '/cls/member/logout.cls');
 	});
 	document.getElementById('jbtn').onclick = function(){
 		location.href= '/cls/member/join.cls';
