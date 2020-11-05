@@ -165,8 +165,7 @@ public class MemberDAO {
 		try {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
+			rs.next();
 				mVO.setMno(rs.getInt("mno"));
 				mVO.setId(rs.getString("id"));
 				mVO.setName(rs.getString("name"));
@@ -174,10 +173,12 @@ public class MemberDAO {
 				mVO.setGen(rs.getString("gen"));
 				mVO.setJoinDate(rs.getDate("joindate"));
 				mVO.setJoinTime(rs.getTime("joindate"));
-				mVO.setSname(rs.getNString("sname"));
-			};
+				mVO.setAvatar(rs.getString("sname"));
+				mVO.setAvt(rs.getInt("avt"));
+				
 			
 		} catch (SQLException e) {
+			System.out.println("회원 정보 반환해주는 함수 오류");
 			e.printStackTrace();
 		}finally {
 			db.close(rs);
@@ -186,5 +187,62 @@ public class MemberDAO {
 		}
 		return mVO;
 	}
+	
+	//회원정보 수정 데이터베이스 작업 전담처리함수
+	public int editMember(String id, String mail, int avt) {
+		int cnt = 0;
+		//할 일
+		// 1. 커넥션 얻어오기
+		con = db.getCon();
+		// 2. 질의명령 가져오기
+		String sql = mSQL.getSQL(mSQL.EDIT_MEMB);
+		// 3. 준비된 스테이트먼트 가져오고
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			// 4. 질의명령 완성하고
+			pstmt.setString(1,mail);
+			pstmt.setInt(2,avt);
+			pstmt.setString(3,id);
+			
+			// 5. 질의명령 보내고 결과받고
+			cnt = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		
+		// 6. 결과반환해주고
+		return cnt;
+	}
+	
+	//회원 탈퇴 데이터베이스 작업 전담 처리함수
+	public int delMemb(int mno, String spw) {
+		int cnt = 0;
+		//con
+		con = db.getCon();
+		//sql
+		String sql = mSQL.getSQL(mSQL.DEL_MEMB);
+		//pstmt
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			//질의명령 완성하고
+			pstmt.setInt(1, mno);
+			pstmt.setString(2, spw);
+			
+			//질의명령 보내고 결과받고
+			cnt = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		
+		//결과반환
+		return cnt;
+	}
+	
 	
 }

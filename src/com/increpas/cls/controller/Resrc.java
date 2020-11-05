@@ -24,13 +24,11 @@ public class Resrc extends HttpServlet {
 		String url = req.getRequestURI();
 		// ### url(실제 요청 경로) : /jspcls/css/member/member.css
 		// 실제 파일 경로 /WEB_INF/resources/css/member/member.css
-		System.out.println(" req.getRequestURI :  "+url);
 		
 		
 		
 		url = url.substring(url.indexOf("/", 1));
 		//		==> /css/member/member.css
-		System.out.println(" /css/member/member.css :  "+url);
 //---------------------------------------------------------------------		
 //		String spath = url.substring(0,url.indexOf("/", 1));
 //		System.out.println(" spath : "+spath);

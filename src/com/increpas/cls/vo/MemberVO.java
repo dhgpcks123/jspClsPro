@@ -5,10 +5,9 @@ import java.text.*;
 
 public class MemberVO {
 	private int mno, avt;
-	private String name, id, pw, mail, tel, gen, sdate, sname;
+	private String name, id, pw, mail, tel, gen, sdate, avatar;
 	private Date joinDate;
 	private Time joinTime;
-	
 	public int getMno() {
 		return mno;
 	}
@@ -63,16 +62,16 @@ public class MemberVO {
 	public void setSdate() {
 		SimpleDateFormat form1 = new SimpleDateFormat("yyyy/MM/dd");
 		SimpleDateFormat form2 = new SimpleDateFormat("HH:mm:ss");
-		this.sdate = form1.format(joinDate)+" "+form2.format(joinTime);
+		this.sdate = form1.format(joinDate) + " " + form2.format(joinTime);
 	}
 	public void setSdate(String sdate) {
 		this.sdate = sdate;
 	}
-	public String getSname() {
-		return sname;
+	public String getAvatar() {
+		return avatar;
 	}
-	public void setSname(String avater) {
-		this.sname = avater;
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 	public Date getJoinDate() {
 		return joinDate;
@@ -87,5 +86,4 @@ public class MemberVO {
 		this.joinTime = joinTime;
 		setSdate();
 	}
-	
 }

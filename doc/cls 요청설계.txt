@@ -79,5 +79,27 @@
 컨트롤러	: com.increpas.cls.controller.MainController
 뷰			: /WEB-INF/views/com/increpas/cls/main.jsp;
 ----------------------------------------------------------------
+----------------------------------------------------------------
+# 회원정보 수정 처리 요청
+요청 내용	: /cls/member/memberEdit.cls
+파라미터	: mail, avt
+컨트롤러	: com.increpas.cls.controller.MemberEdit
+뷰			: ajax ] text
+----------------------------------------------------------------
+----------------------------------------------------------------
+# 탈퇴하기 Proc
+요청 내용	: /cls/memberDrop.cls
+파라미터	: 무
+컨트롤러	: com.increpas.cls.controller.member.DropProc
+뷰			: (redirect) - 성공: 로그인창 /cls/member/login.cls
+						 - 실패: 안내 후 ->회원정보 /cls/member/memberInfo.cls
+----------------------------------------------------------------
+----------------------------------------------------------------
+# 탈퇴하기 ajax
+요청 내용	: /cls/ajaxDel.cls
+파라미터	: 무
+컨트롤러	: com.increpas.cls.controller.member.AjaxDel
+뷰			: ajax ] json
+----------------------------------------------------------------
 
 			  

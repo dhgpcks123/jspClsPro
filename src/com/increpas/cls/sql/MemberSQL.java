@@ -1,11 +1,15 @@
 package com.increpas.cls.sql;
 
 public class MemberSQL {
-	public final int SEL_LOGIN_CNT = 1001;
-	public final int SEL_ID_CNT = 1002;
-	public final int SEL_AVT_ALL = 1003;
-	public final int SEL_INFO_ALL = 1004;
-	public final int ADD_MEMB = 3001;
+	public final int SEL_LOGIN_CNT	= 1001;
+	public final int SEL_ID_CNT		= 1002;
+	public final int SEL_AVT_ALL	= 1003;
+	public final int SEL_INFO_ALL	= 1004;
+	
+	public final int EDIT_MEMB		= 2001;
+	public final int DEL_MEMB		= 2002;
+	
+	public final int ADD_MEMB		= 3001;
 	
 	public String getSQL(int code) {
 		StringBuffer buff = new StringBuffer();
@@ -17,7 +21,8 @@ public class MemberSQL {
 			buff.append(" 	member");
 			buff.append(" WHERE");
 			buff.append(" 	id=?");
-			buff.append(" 	AND pw=?");
+			buff.append(" 	AND pw=?"
+					+ "		AND isshow='Y'");
 			break;
 		case SEL_ID_CNT :
 			buff.append("SELECT ");
@@ -33,6 +38,15 @@ public class MemberSQL {
 			buff.append("FROM ");
 			buff.append("	avatar ");
 			break;
+		case EDIT_MEMB :
+			buff.append("UPDATE ");
+			buff.append("	member ");
+			buff.append("SET ");
+			buff.append("	mail = ?,  ");
+			buff.append("	avt = ?  ");
+			buff.append("WHERE ");
+			buff.append("	id = ? ");
+			break;
 		case ADD_MEMB :
 			buff.append("INSERT INTO ");
 			buff.append("	member(mno, id, pw, name, mail, gen, avt) ");
@@ -45,15 +59,24 @@ public class MemberSQL {
 			break;
 		case SEL_INFO_ALL :
 			buff.append("SELECT ");
-			buff.append("	m.mno, m.id, m.pw, m.name, m.mail, m.gen, m.joindate, at.afile As sname ");
+			buff.append("	m.mno, m.id, m.pw, m.name, m.mail, m.gen, m.joindate, at.afile As sname, m.avt ");
 			buff.append("FROM ");
 			buff.append("	member m, avatar at ");
 			buff.append("WHERE ");
-			buff.append("	m.avt=at.ano");
+			buff.append("	m.avt=at.ano ");
 			buff.append("	AND id=? ");
+			buff.append("	AND isshow='Y' ");
+			break;
+		case DEL_MEMB :
+			buff.append("UPDATE ");
+			buff.append("	member ");
+			buff.append("SET ");
+			buff.append("	isshow = 'N' ");
+			buff.append("WHERE ");
+			buff.append("	mno = ? ");
+			buff.append("	AND pw = ? ");
 			break;
 		}
-		
 		return buff.toString();
 	}
 	
