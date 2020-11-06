@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	alert(sid);
 	$('#lbtn').click(function(){
 		$(location).attr('href', '/cls/member/login.cls');
 	});
@@ -8,10 +9,12 @@ $(document).ready(function(){
 	$('#ibtn').click(function(){
 		$('#frm').submit();
 	});
+	$('#gbtn').click(function(){
+		$(location).attr('href', '/cls/guestBoard/guestBoard.cls');
+	});
 	document.getElementById('jbtn').onclick = function(){
 		location.href= '/cls/member/join.cls';
 	};
-
 });
 
 //	$('#frm').submit();

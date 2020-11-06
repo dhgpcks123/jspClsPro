@@ -26,6 +26,26 @@
 	max-width: 1500px;
 }
 
+.mt5 {
+	margin-top: 5px;
+}
+
+.mt10 {
+	margin-top: 10px;
+}
+
+.mb0 {
+	margin-bottom: 0px;
+}
+
+.mb5 {
+	margin-bottom: 5px;
+}
+
+.mb10 {
+	margin-bottom: 10px;
+}
+
 .txt14 {
 	font-size: 14pt;
 }
@@ -56,28 +76,130 @@
 	margin: 5px 10px;
 }
 
-.pdr10{
-	padding-right: 10px;	
+.pdr10 {
+	padding-right: 10px;
+}
+
+.pdl10 {
+	padding-left: 10px;
+}
+
+.pd10 {
+	padding: 10px;
+}
+
+.pdh1 {
+	padding: 0px 1px;
+}
+
+.pdh3 {
+	padding: 0px 3px;
+}
+
+.pdh10 {
+	padding: 0px 5px;
 }
 
 .clslbl {
-	font-size: 12.5pt;
+	font-size: 12pt;
 	color: gray;
-	line-height: 200%;
+	line-height: 250%;
 }
 
 .imgbox {
 	display: inline-block;
-	width: 97px;
-	height: 97px;
-	border: 1px solid black;
-	margin-top: 5px;
+	width: 105px;
+	height: 105px;
+	margin-top: 12px;
 }
-.imgsrc{
-	width: 95px;
-	height: 95px;	
+.imgsrc {
+	width: 100px;
+	height: 100px;
 }
 
-.mt10 {
-	margin-top: 10px;
+.mt0 {
+	margin-top: 0px!important;
+}
+
+.pdb10 {
+	padding-bottom: 10px;
+}
+
+.pd0 {
+	padding: 0px;
+}
+
+.w250 {
+	width: 250px;
+}
+
+.infoAvtBox {
+	width: 100%;
+	height: auto;
+}
+
+.ft18px {
+	font-size: 16pt;
+}
+
+.contBox {
+	width: 100%;
+	height: 250px;;
+}
+
+.mh3 {
+	margin: 3px 0px;
+}
+
+.mh5 {
+	margin: 5px 0px;
+}
+
+.mh10 {
+	margin: 10px 0px;
+}
+
+.btnBox {
+	height: 20px;
+	line-height: 30%;
+}
+
+.avtbox100 {
+	width: 110px;
+	height: 100px;
+}
+
+.avtimg100 {
+	width: 98px;
+	height: 98px;
+}
+
+.avtbox150 {
+	width: 160px;
+	height: 150px;
+}
+
+.avtimg150 {
+	width: 148px;
+	height: 148px;
+}
+
+.h70 {
+	height: 70px;
+}
+
+.h72 {
+	height: 72.5px;
+}
+
+.h90 {
+	height: 90px;
+}
+
+.pb10 {
+	padding-bottom: 10px;
+}
+
+.pb20 {
+	padding-bottom: 20px;
 }

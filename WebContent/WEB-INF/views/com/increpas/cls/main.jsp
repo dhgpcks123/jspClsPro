@@ -14,7 +14,7 @@
 	<script type="text/javascript">
 		$(function(){
 			var sid = '${SID}';
-
+			
 			if(sid){
 				$('#lbtn').css('display', 'none');
 				$('#btnfr').css('display', 'block');

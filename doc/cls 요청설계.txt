@@ -62,11 +62,26 @@
 
 ### 방명록 요청 설계
 ----------------------------------------------------------------
-#방명록 보기 요청
+#방명록 더미데이터 삽입요청
+요청 내용	: /cls/guestBoard/init.cls
+파라미터	: 무 (SID)
+컨트롤러	: com.increpas.cls.controller.guestBoard.GuestBoard
+뷰			: /WEB-INF/views/com/increpas/cls/guestBoard/GuestBoard.jsp
+----------------------------------------------------------------
+----------------------------------------------------------------
+#방명록 폼 보기 요청
 요청 내용	: /cls/guestBoard/guestBoard.cls
 파라미터	: 무 (SID)
 컨트롤러	: com.increpas.cls.controller.guestBoard.GuestBoard
 뷰			: /WEB-INF/views/com/increpas/cls/guestBoard/GuestBoard.jsp
+----------------------------------------------------------------
+----------------------------------------------------------------
+#방명록 글 등록 처리 요청
+요청 내용	: /cls/guestBoard/gBoardWrite.cls
+파라미터	: 무 (SID)
+컨트롤러	: com.increpas.cls.controller.guestBoard.GBoardWrite
+뷰			: (redirect) - 성공 : /cls/guestBoard/gestBoard.cls
+						 - 실패 : /cls/member/login.cls
 ----------------------------------------------------------------
 
 
@@ -102,4 +117,4 @@
 뷰			: ajax ] json
 ----------------------------------------------------------------
 
-			  
+		  
