@@ -14,10 +14,19 @@ public class AddGDB implements ClsMain {
 
 		String view = "/cls/guestBoard/guestBoard.cls";
 		
+		
+		/*
 		//데이터베이스에 데이터 입력하고
 		ArrayList<HashMap<String, String>> list = getList();
+		 */
+		
+		
+		
 		GBoardDao gDao = new GBoardDao();
+		
+		ArrayList<HashMap<String, String>> list = getList(getNameList());
 		int cnt = gDao.addGBoard(list);
+		
 		System.out.println("### 데이터 입력수 : "  + cnt );
 		
 		req.setAttribute("isRedirect", true);
@@ -55,4 +64,33 @@ public class AddGDB implements ClsMain {
 		return list;
 	}
 
+	public ArrayList<HashMap<String, String>> getList(ArrayList<String> name){
+		ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
+		for(int i = 0 ; i < name.size(); i ++) {
+			HashMap<String, String> map = new HashMap<String, String>();
+			map.put("id", name.get(i));
+			map.put("body", "오늘 가입했어요~~");
+			list.add(map);
+		}
+		return list;
+	}
+	
+	
+	public ArrayList<String> getNameList(){
+	ArrayList<String> name = new ArrayList<String>();
+		name.add("sun");
+		name.add("mygusdnd");
+		name.add("smkim");
+		name.add("joseph");
+		name.add("kys");
+		name.add("wook");
+		name.add("jeong");
+		name.add("juhyun");
+		name.add("park");
+		name.add("jinwoo");
+		name.add("hong");
+	return name;
+	}
+	
+	
 }

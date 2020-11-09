@@ -13,7 +13,7 @@
 
 	<body>
 	<div class="w3-content w3-center mw650">
-		<h1 class="w3-purple w3-padding w3-card-4">Cls 방명록</h1>
+		<h1 class="w3-purple w3-padding w3-card-4">Cls 방명록 리스트</h1>
 		<div class="w3-col pdb10">
 			<div class="w3-col m2 w3-left pdh1">
 				<span class="w3-col w3-button w3-small w3-green w3-hover-lime w3-left mt0 btnBox" id="hbtn">Home</span>
@@ -66,7 +66,7 @@
 							<div class="w3-cell w3-left">작성자 : ${data.id}</div>
 							<div class="w3-cell w3-right"><small>${data.sdate} </small></div>
 						</div>
-						<div class="w3-col w3-padding h70 w3-left-align">${data.body}</div>
+							<div class="w3-col w3-padding h70 w3-left-align">${data.body}</div>
 					</div>
 				</div>
 			</div>
@@ -74,16 +74,32 @@
 		
 		<!-- 페이징 버튼 -->
 		<div class="w3-col w3-center w3-margin-top w3-margin-bottom">
-			<div class="w3-bar w3-border w3-round">
-				<a href="#" class="w3-bar-item w3-button w3-hover-lime">&laquo;</a>
-				<a href="#" class="w3-bar-item w3-button w3-hover-lime">1</a>
-				<a href="#" class="w3-bar-item w3-button w3-hover-lime">2</a>
-				<a href="#" class="w3-bar-item w3-button w3-hover-lime">3</a>
-				<a href="#" class="w3-bar-item w3-button w3-hover-lime">&raquo;</a>
+			<form class="w3-bar w3-border w3-round" method="POST" action="/cls/guestBoard/gBoardList.cls" name="gfrm" id="gfrm">
+				<!-- 파라미터 전송용 인풋태그 -->
+				<input type="hidden" name="nowPage" id="nowPage">
 			
-			</div>
+				<!-- 이전버튼 처리 -->
+				<c:if test="${PAGE.startPage != 1 }">
+					<span class="w3-bar-item w3-button w3-hover-lime pagebtn" id="${PAGE.startPage-1}">&laquo;</span>
+				</c:if>
+				
+				<c:if test="${PAGE.startPage == 1 }">
+					<span class="w3-bar-item w3-light-grey">&laquo;</span>
+				</c:if>
+				
+				<c:forEach var="page" begin="${PAGE.startPage}" end="${PAGE.endPage}">
+					<span class="w3-bar-item w3-button w3-hover-lime pagebtn">${page}</span>
+				</c:forEach>
+				<!-- 다음버튼 처리 -->
+				<c:if test="${PAGE.endPage != PAGE.totalPage }">
+					<span class="w3-bar-item w3-button w3-hover-lime pagebtn" id="${PAGE.endPage+1}">&raquo;</span>
+				</c:if>
+				<c:if test="${PAGE.endPage == PAGE.totalPage }">
+					<span class="w3-bar-item w3-light-grey">&raquo;</span>
+				</c:if>
+				
+			</form>
 		</div>
-			
 	</div>
 	</body>
 </html>

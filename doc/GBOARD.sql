@@ -35,3 +35,9 @@ wdate DESC
 
 SELECT COUNT(*) cnt FROM guestboard, member WHERE g_mno=mno AND id ='euns';
 SELECT COUNT(*) cnt FROM guestboard, member WHERE g_mno=mno AND id ='hh';
+
+
+SELECT
+    ROW_NUMBER() OVER(ORDER BY wdate), *
+FROM
+    guestboard;

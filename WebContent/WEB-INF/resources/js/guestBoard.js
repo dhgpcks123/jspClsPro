@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
 	$('.btnBox').click(function(){
 		var tid = $(this).attr('id');
 		var target = '';
@@ -36,7 +37,53 @@ $(document).ready(function(){
 				$('#frm').submit();
 				return;
 				break;
+				
 		}
 		$(location).attr('href', target);
 	});
+	
+	$('.pagebtn').click(function(){
+		var str = $(this).text();
+		var pcode = str.charCodeAt(str);
+		var sPage = '';
+		
+		
+		if(pcode == 171){ // <<
+			sPage = $(this).attr('id');
+		}else if(pcode == 187){ // >>
+			sPage = $(this).attr('id');
+		}else {
+			sPage = str;
+		}
+		/*if(sPage == 0){
+			return;
+		}*/
+		
+		// 1. GET 방식 전송
+//		$(location).attr('href','/cls/guestBoard/gBoardList.cls?nowPage='+sPage);
+		
+		//POST 방식 쓰려면? FORM태그 만들어야겠죠 +hidden type의 input태그
+		// 2. POST 방식 전송
+		// 파라미터 셋팅부터 하고
+		$('#nowPage').val(sPage);
+		$('#gfrm').submit();
+		
+	});
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

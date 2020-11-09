@@ -1,17 +1,24 @@
 $(document).ready(function(){
-	alert(sid);
 	$('#lbtn').click(function(){
 		$(location).attr('href', '/cls/member/login.cls');
 	});
+	
 	$('#obtn').click(function(){
 		$(location).attr('href', '/cls/member/logout.cls');
 	});
+	
 	$('#ibtn').click(function(){
 		$('#frm').submit();
 	});
+	
 	$('#gbtn').click(function(){
 		$(location).attr('href', '/cls/guestBoard/guestBoard.cls');
 	});
+	$('#rbtn').click(function(){
+		$(location).attr('href', '/cls/reBoard/reBoardList.cls');
+	})
+	
+	
 	document.getElementById('jbtn').onclick = function(){
 		location.href= '/cls/member/join.cls';
 	};

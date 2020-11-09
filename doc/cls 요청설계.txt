@@ -83,6 +83,14 @@
 뷰			: (redirect) - 성공 : /cls/guestBoard/gestBoard.cls
 						 - 실패 : /cls/member/login.cls
 ----------------------------------------------------------------
+# 방명록 리스트 보기 요청
+요청 내용	: /cls/guestBoard/gBoardList.cls
+파라미터	: 무
+컨트롤러	: com.increpas.cls.controller.guestBoard.GBoardList
+뷰			: /WEB-INF/views/com/increpas/cls/guestBoard/GBoardList.jsp
+----------------------------------------------------------------
+
+
 
 
 
@@ -117,4 +125,19 @@
 뷰			: ajax ] json
 ----------------------------------------------------------------
 
-		  
+================================================================
+### 댓글게시판 요청 설계
+--ReBoardVO, ReBoardDao, ReBoardSQL
+
+# 댓글 게시판 더미데이터 삽입 요청
+요청 내용	: /cls/reBoard/initRBD.cls
+파라미터	: (id, body,)
+컨트롤러	: com.increpas.cls.controller.reBoard.AddRBD
+뷰			: redirect ] /cls/reBoard/reBoard.cls
+----------------------------------------------------------------
+# 댓글 게시판 게시글 보기 여청
+요청 내용	: /cls/reBoard/reBoardList.cls
+파라미터	: nowPage
+컨트롤러	: com.increpas.cls.controller.reBoard.ReBoardList
+뷰			: /WEB-INF/views/com/increpas/cls/reBoard/ReBoard.jsp
+----------------------------------------------------------------
