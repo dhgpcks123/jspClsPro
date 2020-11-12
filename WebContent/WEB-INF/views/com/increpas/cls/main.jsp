@@ -53,6 +53,9 @@
 					<div class="w3-col w3-margin-top mt10" style="display:flex; justify-content: space-between;">
 						<h5 class="w3-button w3-lime w3-hover-green mw150" id="gbtn">방명록</h5>
 						<h5 class="w3-button w3-lime w3-hover-green mw150" id="sbtn">설문조사</h5>
+						<c:if test="${RCNT == 0}">
+						<h5 class="w3-button w3-lime w3-hover-green mw150" id="irbtn">댓글 쓰기</h5>
+						</c:if>
 						<h5 class="w3-button w3-lime w3-hover-green mw150" id="rbtn">댓글게시판</h5>
 						<h5 class="w3-button w3-lime w3-hover-green mw150" id="fbtn">파일게시판</h5>
 					</div>

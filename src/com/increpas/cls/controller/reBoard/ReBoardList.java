@@ -14,22 +14,37 @@ public class ReBoardList implements ClsMain {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
-		req.setAttribute("isRedirect", false);
 		String view = "reBoard/ReBoard";
+		ReBoardDao rDao = new ReBoardDao();
+
+		String sid = "";
+		String avatar = "noimage.jpg";
+		
+		//아바타 꺼내오기
+		try {
+			sid = (String)req.getSession().getAttribute("SID");
+			avatar = rDao.getAvtFile(sid);
+		} catch (Exception e) {}
+		
+		// 파라미터 받고
 		int nowPage = 1;
 		try {
 			nowPage = Integer.parseInt(req.getParameter("nowPage"));
-		}catch(Exception e) {}
+		} catch (Exception e) {}
 		
-		ReBoardDao rDao = new ReBoardDao();
-		//총 갯수? 구해오자.
-		int total = rDao.getTotal();
-		//pageUtil 객체 만들고
+		// PageUtil 만들고
+		int total = rDao.getCnt();
 		PageUtil page = new PageUtil(nowPage, total);
 		
 		ArrayList<ReBoardVO> list = rDao.getBoardList(page);
 		
-		req.getSession().setAttribute("LIST", list);
+		// 데이터 뷰에 심고
+		req.setAttribute("LIST", list);
+		//setParmeter없소이다!
+		req.setAttribute("PAGE", page);
+		req.setAttribute("AVTIMG", avatar);
+		
+		
 		return view;
 	}
 

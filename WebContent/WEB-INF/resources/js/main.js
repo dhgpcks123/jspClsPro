@@ -12,11 +12,17 @@ $(document).ready(function(){
 	});
 	
 	$('#gbtn').click(function(){
-		$(location).attr('href', '/cls/guestBoard/guestBoard.cls');
+		$(location).attr('href', '/cls/guestBoard/gBoardList.cls');
 	});
 	$('#rbtn').click(function(){
 		$(location).attr('href', '/cls/reBoard/reBoardList.cls');
-	})
+	});
+	$('#irbtn').click(function(){
+		$(location).attr('href', '/cls/reBoard/initRBD.cls');
+	});
+	$('#sbtn').click(function(){
+		$(location).attr('href', '/cls/survey/surveyInfo.cls');
+	});
 	
 	
 	document.getElementById('jbtn').onclick = function(){

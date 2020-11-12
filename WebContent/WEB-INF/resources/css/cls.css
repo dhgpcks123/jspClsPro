@@ -83,6 +83,12 @@
 .pdl10 {
 	padding-left: 10px;
 }
+.pdl30 {
+	padding-left: 30px;
+}
+.pdl50 {
+	padding-left: 50px;
+}
 
 .pd10 {
 	padding: 10px;
@@ -159,6 +165,10 @@
 	margin: 10px 0px;
 }
 
+#wbtn {
+	height: 20px;
+	line-height: 30%;
+}
 .btnBox {
 	height: 20px;
 	line-height: 30%;
