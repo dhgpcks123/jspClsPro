@@ -197,7 +197,7 @@
 ----------------------------------------------------------------
 # 설문조사 주제 폼 요청
 요청 내용	: /cls/survey/surveyInfo.cls
-파라미터	: 
+파라미터	: 무
 컨트롤러	: com.increpas.cls.controller.survey.SurveyInfo
 뷰			: /WEB-INF/views/com/increpas/cls/survey/ServeyInfo.jsp
 ----------------------------------------------------------------
@@ -211,14 +211,14 @@
 ----------------------------------------------------------------
 # 설문조사 처리 요청
 요청 내용	: /cls/survey/surveyProc.cls
-파라미터	: 
+파라미터	: qno[] 
 컨트롤러	: com.increpas.cls.controller.survey.Survey
 뷰			: (redirect) - /cls/survey/surveyResult.cls
 ----------------------------------------------------------------
 ----------------------------------------------------------------
 # 설문조사 결과 폼 요청
 요청 내용	: /cls/survey/surveyResult.cls
-파라미터	: 
+파라미터	: sno
 컨트롤러	: com.increpas.cls.controller.survey.SurveyResult
 뷰			: /WEB-INF/views/com/increpas/cls/survey/ServeyResult.jsp
 ----------------------------------------------------------------

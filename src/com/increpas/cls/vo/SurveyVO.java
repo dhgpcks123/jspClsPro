@@ -5,18 +5,12 @@ import java.text.*;
 
 
 public class SurveyVO {
-	private int sno, qno, sano, mno, upno, cnt, step;
+	private int sno, qno, sano, mno, upno, cnt;
+	private double per;
 	private String sbody, qbody, id, sdate, ssdate, sedate;
 	private Date startdate, enddate, sadate;
 	private Time startTime, endTime, saTime;
 	
-	
-	public int getStep() {
-		return step;
-	}
-	public void setStep(int step) {
-		this.step = step;
-	}
 	public int getSno() {
 		return sno;
 	}
@@ -52,6 +46,12 @@ public class SurveyVO {
 	}
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
+	}
+	public double getPer() {
+		return per;
+	}
+	public void setPer(double per) {
+		this.per = per;
 	}
 	public String getSbody() {
 		return sbody;
@@ -137,11 +137,9 @@ public class SurveyVO {
 		this.saTime = saTime;
 		setSdate();
 	}
-	
 	public String strForm(Date d, Time t) {
-		SimpleDateFormat form1 = new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat form1 = new SimpleDateFormat("yyyy/MM/dd ");
 		SimpleDateFormat form2 = new SimpleDateFormat("HH:mm");
-		return form1.format(d)+" "+form2.format(t);
+		return form1.format(d) + form2.format(t);
 	}
-	
 }

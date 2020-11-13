@@ -5,7 +5,7 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>설문결과</title>
 	<link rel="stylesheet" type="text/css" href="/cls/css/w3.css">
 	<link rel="stylesheet" type="text/css" href="/cls/css/cls.css">
 	<script type="text/javascript" src="/cls/js/jquery-3.5.1.min.js"></script>
@@ -14,39 +14,49 @@
 
 	<body>
 		<div class="w3-content w3-center mw700">
-			<h1 class="w3-padding w3-blue">설문문항</h1>
+			<h1 class="w3-padding w3-blue">설 문 결 과</h1>
 			<div class="w3-col w3-padding w3-card-4">
-				<h4 class="w3-col w3-border-bottom w3-text-blue">2020년 11월 class2 아이돌 선호도 조사</h4>
-				<form class="w3-col w3-padding w3-left-align w3-border-bottom">
-				
+				<h4 class="w3-col w3-border-bottom w3-text-blue">${LIST.get(0).sbody}</h4>
+				<div class="w3-col w3-padding w3-left-align w3-border-bottom">
 					<!-- 문항 추가 -->
+
+<!--  문항번호 변수 만들기  -->
+<c:set var="no" value="${0}"/>
+
+<c:forEach var="data" items="${LIST}" varStatus="st">
+	<c:if test="${data.upno == 0}">
+		<c:set var="no" value="${no +1}"/>
+		<!-- 보기번호 변수 만들기 -->
+		<c:set var="subno" value="${0}"/>
+		
+		<c:if test="${st.index == 0}">
 					<div class="w3-col w3-margin-bottom">
-						<h5 class="w3-left-align txt14">1. 당신이 좋아하는 가수는?</h5>
-						<div class="w3-col pdl30">
-							<div class="ft12"> 제시</div>
-							<div class="w3-col m10 w3-orange" style="width: 25%; height: 7px;"><p></p></div>
-							<div class="w3-col m2 w3-text-orange w3-right">25%</div>
-						</div>
-						<div class="w3-col pdl30">
-							<div class="ft12"> 안지영</div>
-							<div class="w3-col m10 w3-orange" style="width: 45%; height: 7px;"><p></p></div>
-							<div class="w3-col m2 w3-text-orange w3-right">45%</div>
-						</div>
-						<div class="w3-col pdl30">
-							<div class="ft12"> 우지윤</div>
-							<div class="w3-col m10 w3-orange" style="width: 25%; height: 7px;"><p></p></div>
-							<div class="w3-col m2 w3-text-orange w3-right">25%</div>
-						</div>
-						<div class="w3-col pdl30">
-							<div class="ft12"> 헨니</div>
-							<div class="w3-col m10 w3-orange" style="width: 5%; height: 7px;"><p></p></div>
-							<div class="w3-col m2 w3-text-orange w3-right">5%</div>
-						</div>
+						<h5 class="w3-left-align txt14">${no}. ${data.qbody}</h5>
+		</c:if>				
+		<c:if test="${st.index != 0}">
 					</div>
-					
-				</form>
+					<div class="w3-col w3-margin-bottom">
+						<h5 class="w3-left-align txt14">${no}. ${data.qbody}</h5>
+		</c:if>				
+	</c:if>
+		<c:if test="${data.upno != 0}">
+			<c:set var = "subno" value="${subno+1}"/>		
+					<div class="w3-col pdl30">
+						<div class="ft12"> ${subno}) ${data.qbody}</div>
+						<div class="w3-col m10 w3-padding">
+							<div class="w3-col w3-orange" style="width: ${data.per}%; height: 7px;"></div>
+						</div>
+						<div class="w3-col m2 w3-text-orange w3-right">${data.per}%</div>
+					</div>
+		</c:if>
+</c:forEach>
+		
+						
+					</div>
+				</div>
 				<div class="w3-col w3-margin-top">
-					<div class="w3-col w3-button w3-green w3-hover-lime" id="hbtn">HOME</div>
+					<div class="w3-col m6 w3-button w3-blue w3-hover-lime" id="hbtn">HOME</div>
+					<div class="w3-col m6 w3-button w3-green w3-hover-lime" id="sibtn">설문조사메인</div>
 				</div>
 			</div>
 		</div>

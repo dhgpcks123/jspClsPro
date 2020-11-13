@@ -49,20 +49,79 @@ public class SurveyDao {
 		return list;
 	}
 	
-	//응답문항 리스트 가져오는 함수를 만든다
-	public ArrayList<SurveyVO> getSQList(String sino){
+	public ArrayList<SurveyVO> getQuestList(int sno){
 		ArrayList<SurveyVO> list = new ArrayList<SurveyVO>();
+		
 		con = db.getCon();
 		String sql = sSQL.getSQL(sSQL.SEL_QUEST_LIST);
 		pstmt = db.getPSTMT(con, sql);
 		try {
-			pstmt.setString(1, sino);
+			pstmt.setInt(1, sno);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				SurveyVO sVO = new SurveyVO();
+				sVO.setSbody(rs.getString("sbody"));
+				sVO.setSno(rs.getInt("sno"));
+				sVO.setQno(rs.getInt("qno"));
+				sVO.setUpno(rs.getInt("upno"));
 				sVO.setQbody(rs.getString("qbody"));
-				sVO.setUpno(rs.getInt("upno"));	
-				sVO.setStep(rs.getInt("step"));
+				
+				list.add(sVO);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		return list;
+	}
+	
+	// 설문응답 데이터베이스 작업 전담 처리함수
+		public int addAnswer(ArrayList<SurveyVO> list) {
+			int cnt = 0;
+			con = db.getCon();
+			String sql = sSQL.getSQL(sSQL.ADD_ANSWER);
+			
+			try {
+				for(int i = 0 ; i < list.size() ; i++ ) {
+					pstmt = db.getPSTMT(con, sql);
+					pstmt.setString(1, list.get(i).getId());
+					pstmt.setInt(2, list.get(i).getQno());
+					
+					cnt += pstmt.executeUpdate();
+					db.close(pstmt);
+				}
+			} catch(Exception e){
+				db.close(pstmt);
+				e.printStackTrace();
+			} finally {
+				db.close(con);
+			}
+			return cnt;
+		}
+	
+	// 설문 결과 조회 전담 처리함수
+	public ArrayList<SurveyVO> getResult(int sno){
+		ArrayList<SurveyVO> list = new ArrayList<SurveyVO>();
+		con = db.getCon();
+		String sql = sSQL.getSQL(sSQL.SEL_ANSWER_RESULT);
+		
+		pstmt = db.getPSTMT(con, sql);
+		
+		try {
+			pstmt.setInt(1, sno);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				SurveyVO sVO = new SurveyVO();
+				sVO.setSbody(rs.getString("sbody"));
+				sVO.setQno(rs.getInt("qno"));
+				sVO.setQbody(rs.getString("qbody"));
+				sVO.setSno(rs.getInt("sno"));
+				sVO.setUpno(rs.getInt("upno"));
+				sVO.setCnt(rs.getInt("cnt"));
+				sVO.setPer(rs.getDouble("per"));
 				
 				list.add(sVO);
 			}
@@ -74,8 +133,6 @@ public class SurveyDao {
 			db.close(pstmt);
 			db.close(con);
 		}
-		
 		return list;
 	}
-	
 }
