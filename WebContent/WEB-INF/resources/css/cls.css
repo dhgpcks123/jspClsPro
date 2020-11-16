@@ -54,6 +54,14 @@
 	font-size: 16pt;
 }
 
+.txt24 {
+	font-size: 24pt;
+}
+
+.txt48 {
+	font-size: 48pt;
+}
+
 .clsbold {
 	font-weight: bold;
 }
@@ -212,4 +220,8 @@
 
 .pb20 {
 	padding-bottom: 20px;
+}
+
+.dfr {
+	height: 30px;
 }

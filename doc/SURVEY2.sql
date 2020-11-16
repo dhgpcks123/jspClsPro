@@ -44,12 +44,15 @@ VALUES(
 -- 보기별 응답수 조회
 
 SELECT
-    
+    sa_qno qno, count(*) cnt
 FROM
-    surveyInfo, surveyAnswer
+    surveyInfo, surveyAnswer, surveyquest
 WHERE
-    
+    -- join
+    sno = sino
+    AND sqno(+) = sa_qno
+    AND sno = 1001
 GROUP BY
-    
+    sa_qno
 ;
 
