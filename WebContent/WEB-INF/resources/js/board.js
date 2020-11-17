@@ -28,9 +28,28 @@ $(document).ready(function(){
 	$('.brow').click(function(){
 		var no= $(this).attr('id');
 		$('#bno').val(no);
-		$('#bfrm').attr('action','/cls/board/boardDetail.cls')
+		$('#bfrm').attr('action','/cls/board/boardDetail.cls');
 		$('#bfrm').submit();
 		
 	});
+	$('#rbtn').click(function(){
+		$(location).attr('href', '/cls/board/boardWrite.cls');		
+	});
+	
+	/* 게시글 작성 페이지 이벤트 처리 */
+	$('.wbtn').click(function(){
+		var shead = $('#title').val();
+		var sbody = $('#body').val();
+		
+		// 데이터가 입력되어있는지 확인하고...
+		if(((shead.trim() == '')) || (!sbody)){
+			return;
+		}
+		// 이 곳을 실행하는 경우는 모든 입력태그에(파일태그제외) 데이터가 입력된 경우
+		$('#wfrm').submit();
+		
+	});
+	
+	
 	
 });

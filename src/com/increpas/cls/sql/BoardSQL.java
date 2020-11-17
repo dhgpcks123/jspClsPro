@@ -6,6 +6,7 @@ public class BoardSQL {
 	public final int SEL_BOARD_CNT		= 1003;
 	public final int SEL_MEMB_LIST		= 1004;
 	public final int SEL_MEMB_BODY		= 1005;
+	public final int SEL_DETAIL_IMG		= 1006;
 	
 	public final int ADD_BOARD			= 3001;
 	public final int ADD_FILE			= 3002;
@@ -68,6 +69,16 @@ public class BoardSQL {
 			buff.append("    bmno = mno ");
 			buff.append("    AND bno = ? ");
 			break;
+		case SEL_DETAIL_IMG:
+			buff.append("SELECT");
+			buff.append("    id, bno, title, body, bdate, bclick, oriname, savename, dir ");
+			buff.append("FROM ");
+			buff.append("    board, fileinfo, member ");
+			buff.append("WHERE ");
+			buff.append("    fbno(+) = bno ");
+			buff.append("    AND bno = ? ");
+			buff.append("    AND bmno = mno ");
+			break;
 		case ADD_BOARD:
 			buff.append("INSERT INTO ");
 			buff.append(" 	board(bno, bmno, title, body) ");
@@ -77,6 +88,24 @@ public class BoardSQL {
 			buff.append(" ?, ? ");
 			buff.append(" ) ");
 			break;
+		case ADD_FILE:
+			buff.append("INSERT INTO" ); 
+			buff.append("    fileinfo(fno, fbno, dir, oriname, savename, len) "); 
+			buff.append("VALUES( "); 
+			buff.append("    (SELECT NVL(MAX(fno)+1, 1000001) FROM fileinfo), "); 
+			buff.append("    ( "); 
+			buff.append("        SELECT "); 
+			buff.append("            max(bno) "); 
+			buff.append("        FROM "); 
+			buff.append("            board, member "); 
+			buff.append("        WHERE "); 
+			buff.append("            bmno = mno "); 
+			buff.append("            AND id = ? "); 
+			buff.append("    ), '/img/upload/', ?, ?, ? "); 
+			buff.append(") ");
+			break;
+			
+			
 		}
 		
 		return buff.toString();

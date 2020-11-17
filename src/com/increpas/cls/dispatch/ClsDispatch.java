@@ -93,10 +93,9 @@ public class ClsDispatch extends HttpServlet {
 		// 2. full <== /jspcls/xxxx~~/xxx~~.cls
 		String realPath = full.substring(full.indexOf('/',1));
 		
-		System.out.println("Properties : [ " + realPath + " ]");
 		// 3. 요청 내용에 맞는 실제 실행할 클래스를 가져온다.
 		ClsMain cls = map.get(realPath);
-		System.out.println("null일 시 경로체크 : [ " + cls + " ]");
+		System.out.println("요청:[ "+realPath+" ], MainCls:[ " + cls + " ]");
 		Boolean bool = null;
 		/*
 		 	bool == null	: 비동기 통신 처리

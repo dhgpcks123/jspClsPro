@@ -188,6 +188,81 @@ public class BoardDao {
 		return list;
 	}
 	
+	// 파일정보 입력 전담 처리함수
+	public int addFile(FileVO fVO) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = bSQL.getSQL(bSQL.ADD_FILE);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setString(1, fVO.getId());
+			pstmt.setString(2, fVO.getOriname());
+			pstmt.setString(3, fVO.getSavename());
+			pstmt.setLong(4, fVO.getLen());
+			
+			cnt = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
+	}
+	
+	// 파일정보 입력 전담 처리함수2
+	public int addFile(ArrayList<FileVO> list) {
+		int cnt = 0;
+		// 위에서 만든 단일파일 업로드 함수를 재사용하기로 한다.
+		for(FileVO fVO : list) {
+			cnt += addFile(fVO);
+		}
+		
+		return cnt;
+	}
+	
+	// 상세보기 정보 보기 전담 처리함수
+	public HashMap getDetailIMG(int bno) {
+		HashMap map = new HashMap();
+		FileVO fVO = null;
+		BoardVO bVO = null;
+		
+		con = db.getCon();
+		String sql = bSQL.getSQL(bSQL.SEL_DETAIL_IMG);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, bno);
+			rs = pstmt.executeQuery();
+			rs.next();
+			
+			fVO = new FileVO();
+			bVO = new BoardVO();
+			
+			bVO.setId(rs.getString("id"));
+			bVO.setBno(rs.getInt("bno"));
+			bVO.setTitle(rs.getString("title"));
+			bVO.setBody(rs.getString("body"));
+			bVO.setClick(rs.getInt("bclick"));
+			map.put("BoardVO", bVO);
+			
+			fVO.setOriname(rs.getString("oriname"));
+			fVO.setSavename(rs.getString("savename"));
+			fVO.setDir(rs.getString("dir"));
+			
+			map.put("FileVO", fVO);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		
+		
+		return map;
+	}
 }
 
 

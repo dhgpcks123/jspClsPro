@@ -22,9 +22,7 @@ public class Board implements ClsMain {
 		
 		try {
 				nowPage = Integer.parseInt(str);
-		}catch(Exception e) {
-			System.out.println("### 숫자 포맷 잘못 됨 ###");
-		}
+		}catch(Exception e) {}
 		
 		PageUtil page = new PageUtil(nowPage, total, 4, 4);
 		

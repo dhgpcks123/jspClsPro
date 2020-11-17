@@ -17,7 +17,8 @@
 요청내용 : /cls/board/boardWriteProc.cls
 파라미터 : title, body[, file ]
 컨트롤러 : com.increpas.cls.controller.board.BoardWriteProc
-뷰	  : /WEB-INF/views/com/increpas/cls/board/BoardWriteProc.jsp
+뷰  	 : (redirect) 성공 : /cls/board/boardList.cls
+					  실패 : /cls/board/boardWrite.cls
 -----------------------------------------------------------------------------
 # 게시글 상세보기 요청
 요청내용 : /cls/board/boardDetail.cls
