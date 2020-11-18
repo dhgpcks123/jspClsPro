@@ -69,3 +69,72 @@ FROM
 WHERE
     fbno=bno
 ;
+----------------------------------------------------------------
+-- 사원의 사원번호, 사원이름, 부서번호, 부서원수를 조회하세요
+
+--SELECT 절 내에서 사용
+SELECT
+    empno 사원번호, ename 사원이름, deptno 부서번호,
+    (SELECT COUNT(*) FROM emp WHERE deptno = e.deptno) 부서원수
+FROM
+    emp e
+;
+
+--인라인뷰로 사용
+SELECT
+    empno, ename, deptno, cnt
+FROM
+    emp d,
+    (
+        SELECT
+            deptno dno, count(*) cnt
+        FROM
+            emp
+        GROUP BY
+            deptno
+    ) e
+WHERE
+   deptno =dno
+;
+
+
+SELECT
+    COUNT(*) cnt
+FROM
+    emp
+GROUP BY
+    deptno
+HAVING
+    deptno = 30
+;
+
+
+-- 게시판의 글 번호, 글 제목, 작성일, 첨부파일갯수를 조회하세요
+SELECT
+    bno, title, bdate, NVL(cnt, 0) CNT
+FROM
+    board,
+    (
+        SELECT
+            fbno, COUNT(*) cnt
+        FROM   
+            fileinfo
+        GROUP BY
+            fbno
+    )
+WHERE
+    bno = fbno(+)
+;
+
+--------------------------------------------------------------
+
+    
+UPDATE  board
+SET
+    bclick = (SELECT MAX(bclick)+1 FROM board WHERE bno=10026 )
+WHERE
+    bno=10026;
+
+UPDATE board
+SET
+    bclick = 0;

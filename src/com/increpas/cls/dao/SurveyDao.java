@@ -29,7 +29,6 @@ public class SurveyDao {
 		try {
 		
 			pstmt.setString(1, id);
-			System.out.println("셋팅 아이디" + id);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {

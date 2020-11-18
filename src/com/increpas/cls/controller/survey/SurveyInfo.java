@@ -15,7 +15,6 @@ public class SurveyInfo implements ClsMain {
 		String sid = "";
 		try {
 			sid = (String)req.getSession().getAttribute("SID");
-			System.out.println("가져온 아이디" + sid);
 			if(sid == null) {
 				throw new Exception();
 			}
@@ -26,7 +25,6 @@ public class SurveyInfo implements ClsMain {
 		
 		SurveyDao sDao = new SurveyDao();
 		ArrayList<SurveyVO> list = sDao.getSIList(sid);
-		System.out.println("size: " + list.size());
 		req.setAttribute("LIST", list);
 
 		String view = "survey/SurveyInfo";

@@ -8,6 +8,8 @@ public class BoardSQL {
 	public final int SEL_MEMB_BODY		= 1005;
 	public final int SEL_DETAIL_IMG		= 1006;
 	
+	public final int UPD_BOARD_CLICK	= 2001;
+
 	public final int ADD_BOARD			= 3001;
 	public final int ADD_FILE			= 3002;
 	
@@ -34,7 +36,7 @@ public class BoardSQL {
 			break;
 		case SEL_BOARD_PAGE:
 			buff.append("SELECT ");
-			buff.append("    * "); 
+			buff.append("    bno, rno, body, id, bno, title, bdate, bclick, NVL(cnt, 0) CNT "); 
 			buff.append("FROM( ");
 			buff.append("    SELECT ");
 			buff.append("        rownum rno, b.* ");
@@ -48,9 +50,18 @@ public class BoardSQL {
 			buff.append("        	 AND mno = bmno ");
 			buff.append("        ORDER BY ");
 			buff.append("            bno DESC) b ");
-			buff.append("    ) ");
+			buff.append("    ), ");
+			buff.append("        (SELECT ");
+			buff.append("   	     fbno, COUNT(*) cnt ");
+			buff.append("        FROM ");
+			buff.append("        	 fileinfo ");
+			buff.append("        GROUP BY ");
+			buff.append("        	 fbno) ");
 			buff.append("WHERE ");
 			buff.append("    rno BETWEEN ? AND ? ");
+			buff.append("    AND bno = fbno(+) ");
+			buff.append("ORDER BY ");
+			buff.append("    rno ");
 			break;
 		case SEL_MEMB_LIST:
 			buff.append("SELECT ");
@@ -79,6 +90,15 @@ public class BoardSQL {
 			buff.append("    AND bno = ? ");
 			buff.append("    AND bmno = mno ");
 			break;
+			
+		case UPD_BOARD_CLICK:
+			buff.append("UPDATE  board "); 
+			buff.append("SET "); 
+			buff.append("    bclick =(SELECT MAX(bclick)+1 FROM board WHERE bno=? ) "); 
+			buff.append("WHERE "); 
+			buff.append("    bno=? ");
+			break;
+			
 		case ADD_BOARD:
 			buff.append("INSERT INTO ");
 			buff.append(" 	board(bno, bmno, title, body) ");

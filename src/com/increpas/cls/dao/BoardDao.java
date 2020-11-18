@@ -73,6 +73,8 @@ public class BoardDao {
 				bVO.setClick(rs.getInt("bclick"));
 				bVO.setWdate(rs.getDate("bdate"));
 				bVO.setWtime(rs.getTime("bdate"));
+				bVO.setCnt(rs.getInt("cnt"));
+				
 				list.add(bVO);
 				
 			}
@@ -263,6 +265,29 @@ public class BoardDao {
 		
 		return map;
 	}
+	
+	//cnt 업데이트 해주는 함수
+	public int getUpCnt(int bno) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = bSQL.getSQL(bSQL.UPD_BOARD_CLICK);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, bno);
+			pstmt.setInt(2, bno);
+			
+			cnt = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		
+		return cnt;
+	}
+	
 }
 
 

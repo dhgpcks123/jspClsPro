@@ -7,7 +7,7 @@ import java.sql.Date;
 
 
 public class BoardVO {
-	private int bno, mno, ano, click;
+	private int bno, mno, ano, click, cnt;
 	private long len;
 	private String title, body, id, avatar, sdate;
 	private Date wdate;
@@ -38,6 +38,12 @@ public class BoardVO {
 	}
 	public void setClick(int click) {
 		this.click = click;
+	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
 	}
 	public long getLen() {
 		return len;

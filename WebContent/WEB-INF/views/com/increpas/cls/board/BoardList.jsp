@@ -8,6 +8,7 @@
 	<title>File Board list</title>
 	<link rel="stylesheet" type="text/css" href="/cls/css/w3.css">
 	<link rel="stylesheet" type="text/css" href="/cls/css/cls.css">
+	<script src="https://kit.fontawesome.com/e6e9b86680.js" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="/cls/js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="/cls/js/board.js"></script>
 	</head>
@@ -52,7 +53,12 @@
 					<div class="w3-col w3-center w3-border-bottom w3-hover-lime brow" id="${data.bno}">
 						<div class="w3-col m2 w3-border-right">${data.bno}</div>
 						<div class="w3-col m2 w3-border-right">${data.id}</div>
-						<div class="w3-col m4 w3-border-right">${data.title}</div>
+						<div class="w3-col m4 w3-border-right">
+				<c:if test="${data.cnt != 0}">
+					<span class="w3-text-gray"><i class="far fa-file-image"></i></span>
+				</c:if>
+						${data.title}
+						</div>
 						<div class="w3-col m3 w3-border-right">${data.sdate}</div>
 						<div class="w3-col m1 ">${data.click}</div>
 					</div>

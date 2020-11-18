@@ -34,7 +34,7 @@
 		<c:if test="${FILE.savename!=null}">
 			<div class="w3-col w3-margin-top">
 				<label class="w3-col m2 w3-right-align w3-label">IMG : </label>
-				<div id="outImg" class="w3-col m9 pdl20 w3-margin-left"><img src="/cls${FILE.dir}${FILE.savename}" style="width: 100px; height: auto;"></div>
+				<div id="outImg" class="w3-col m9 pdl20 w3-margin-left"><a href="/cls${FILE.dir}${FILE.savename}"><img src="/cls${FILE.dir}${FILE.savename}" style="width: 100px; height: auto;"></a></div>
 			</div>
 		</c:if>
 			<div class="w3-col w3-margin-top w3-margin-bottom ">
@@ -43,7 +43,6 @@
 					<div id="body" class="w3-col w3-margin-left" style="">${BOARD.body}</div>
 				</div>
 			</div>
-			
 		</form>
 		<div class="w3-col w3-margin-top w3-card-4 w3-margin-bottom">
 			<div class="w3-third w3-button w3-green w3-hover-lime" id="hbtn">Home</div>
