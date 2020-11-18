@@ -5,12 +5,15 @@ import java.util.*;
 
 import com.increpas.cls.controller.*;
 import com.increpas.cls.dao.*;
+import com.increpas.cls.util.SessionUtil;
 import com.increpas.cls.vo.*;
 
 public class SurveyInfo implements ClsMain {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
+		
+//		String sid = SessionUtil.procSession(req, resp);
 		
 		String sid = "";
 		try {

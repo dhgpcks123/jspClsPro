@@ -1,14 +1,13 @@
 package com.increpas.cls.controller.board;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.increpas.cls.controller.ClsMain;
 import com.increpas.cls.dao.BoardDao;
-import com.increpas.cls.util.SessionUtil;
+import com.increpas.cls.util.*;
 import com.increpas.cls.vo.BoardVO;
 import com.increpas.cls.vo.FileVO;
 
@@ -16,7 +15,8 @@ public class BoardDetail implements ClsMain {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
-//		SessionUtil util = new SessionUtil();
+new SessionUtil();
+		//		SessionUtil util = new SessionUtil();
 //		util.procSession(req, resp); 이렇게 할 필요 없어. 왜냐고?
 //		SessionUtil클래스 만들 때 procSession을 static으로 해놨어.
 //		그냥 import만 해주면 불러와서 쓸 수 있는셈이지
@@ -26,6 +26,8 @@ public class BoardDetail implements ClsMain {
 			req.setAttribute("isRedirect", true);
 			return "/cls/member/login.cls";
 		}
+//		String sid = SessionUtil.procSession(req, resp);
+		
 		//??? 이건 되고,
 		//new SessionUtil().procSession(req, resp); 이건 안 되는 이유가 뭘까?
 		//Survey.java 참고해보셈. Survey.java는 된다고

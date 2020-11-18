@@ -14,7 +14,12 @@ public class Survey implements ClsMain {
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
 		// 세션 검사하고
-		new SessionUtil().procSession(req, resp);
+//		SessionUtil.procSession(req, resp);
+		String sid = (String) req.getSession().getAttribute("SID");
+		if(sid == null) {
+			req.setAttribute("isRedirect", true);
+			return "/cls/member/login.cls";
+		}
 		
 		String view = "survey/Survey";
 		
