@@ -49,7 +49,30 @@ $(document).ready(function(){
 		$('#wfrm').submit();
 		
 	});
+	$('#edit').click(function(){
+		$('#frm').submit();
+	});
+	// 문서가 완성이 되면 태그에 입력된 값을 기억해 놓는다.
+	var stitle = $('#title').text();
+	var body = $('#body').text();
 	
-	
+	$('#dit').click(function(){
+		var tTitle = $('#title').html();
+		var tBody = $('#body').html();
+		
+		if(stitle == tTitle && tBody == body){
+			return;
+		}
+		
+		if(stitle == tTitle){
+			$('#title').prop('readonly', true);
+		}
+		
+		if(tBody == body){
+			$('#body').prop('readonly', true);
+		}
+		
+		$('#efrm').submit();
+	});
 	
 });

@@ -225,8 +225,8 @@ public class BoardDao {
 	}
 	
 	// 상세보기 정보 보기 전담 처리함수
-	public HashMap getDetailIMG(int bno) {
-		HashMap map = new HashMap();
+	public HashMap<String, Object> getDetailIMG(int bno) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
 		FileVO fVO = null;
 		BoardVO bVO = null;
 		
@@ -244,7 +244,7 @@ public class BoardDao {
 			bVO.setId(rs.getString("id"));
 			bVO.setBno(rs.getInt("bno"));
 			bVO.setTitle(rs.getString("title"));
-			bVO.setBody(rs.getString("body"));
+			bVO.setBody(rs.getString("body").replaceAll("\r\n",  "<br>"));
 			bVO.setClick(rs.getInt("bclick"));
 			map.put("BoardVO", bVO);
 			
@@ -288,7 +288,48 @@ public class BoardDao {
 		return cnt;
 	}
 	
+	
+	// 게시판 수정 전담 처리함수 doc DynamicQuery.txt 참고
+	public int editBoard(BoardVO bVO) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = ProcSql(bSQL.getSQL(bSQL.EDIT_BOARD), bVO);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			// 글 번호 채워주고
+			pstmt.setInt(1, bVO.getBno());
+			
+			cnt = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		
+		return cnt;
+	}
+	
+	
+	// 게시글 수정 질의명령 전담 처리함수
+	public String ProcSql(String sql, BoardVO bVO) {
+		if(bVO.getTitle() != null && bVO.getBody() == null) {
+			sql = sql.replaceAll("###", "title =" +bVO.getTitle()+"'");
+		} else if(bVO.getTitle() == null && bVO.getBody() != null) {
+			sql = sql.replaceAll("###", "body ="+bVO.getBody()+"'");
+		} else if(bVO.getTitle() != null && bVO.getBody() != null) {
+			sql = sql.replaceAll("###", "title ="+bVO.getTitle()+", body ="+bVO.getBody()+"'");
+		}
+		
+		return sql;
+	}
 }
+
+
+
+
+
 
 
 

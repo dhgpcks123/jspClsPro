@@ -13,10 +13,13 @@
 	</head>
 
 	<body>
+		<form method="POST" action="/cls/board/boardEdit.cls" id="frm">
+			<input type="hidden" name="bno" value="${BOARD.bno}">
+		</form>
+	
 		<div class="w3-content mw750">
 		<h1 class="w3-indigo w3-center w3-padding w3-card-4 w3-round-large">게시글 상세보기</h1>
-		<form class="w3-col w3-margin-top w3-card-4 w3-padding" encType="multipart/form-data"
-			method="POST" action="/cls/board/boardWriteProc.cls" id="wfrm" name="wfrm">
+		<div class="w3-col w3-margin-top w3-card-4 w3-padding" >
 			<div class="w3-col w3-margin-top">
 				<label class="w3-col m2 w3-right-align w3-label">Writer :</label>
 				<div class="w3-col m9 pdl20 w3-label w3-margin-left" style="padding-left: 5px;">${BOARD.id}</div>
@@ -43,11 +46,13 @@
 					<div id="body" class="w3-col w3-margin-left" style="">${BOARD.body}</div>
 				</div>
 			</div>
-		</form>
+		</div>
 		<div class="w3-col w3-margin-top w3-card-4 w3-margin-bottom">
+			<div class="w3-third w3-button w3-red w3-hover-deep-orange" id="backbtn">취소</div>
+		<c:if test="${SID eq BOARD.id}">
+			<div class="w3-third w3-button w3-blue w3-hover-deep-blue" id="edit">수정</div>
+		</c:if>
 			<div class="w3-third w3-button w3-green w3-hover-lime" id="hbtn">Home</div>
-			<div class="w3-third w3-button w3-red w3-hover-deep-orange" id="backbtn">아이고</div>
-			<div class="w3-third w3-button w3-blue w3-hover-deep-blue reWritebtn">수정</div>
 		</div>
 	</div>
 		
